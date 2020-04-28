@@ -5,11 +5,11 @@ export interface IPassword {
   reason: string | null;
   description: string | null;
 }
-import { PASSWORD } from "@jtmorrisbytes/lib/src/Constants";
+import { PASSWORD } from "../../Constants";
 
 export class Password extends String implements IPassword {
-  private _reason: string | null = null;
-  private _description: string | null = null;
+  private _reason: string = "";
+  private _description: string = "";
   private _isValid: boolean = false;
   private _value: string = "";
   get isValid(): boolean {
@@ -33,7 +33,7 @@ export class Password extends String implements IPassword {
     this._value = password;
     this.validate(password);
   }
-  validate(password) {
+  validate(password: string) {
     // first check the password length
     if (password.length < PASSWORD.LENGTH.MIN) {
       this._reason = PASSWORD.LENGTH.TOO_SHORT.REASON;

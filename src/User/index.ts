@@ -9,9 +9,9 @@ export interface IUser {
   readonly isPasswordValid: Function;
 }
 
-import { Password } from "@jtmorrisbytes/lib/src/User/Password";
-import { Email } from "@jtmorrisbytes/lib/src/User/Email";
-import { Name } from "@jtmorrisbytes/lib/src/User/Name";
+import { Password } from "./Password";
+import { Email } from "./Email";
+import { Name } from "./Name";
 
 // type User = {
 //   firstName: Name;
@@ -60,14 +60,16 @@ export class User extends Object implements IUser {
     zip?: string
   ) {
     super();
+    firstName = firstName || "";
+    lastName = lastName || "";
     this._firstName = new Name(firstName);
     this._lastName = new Name(lastName);
     this._password = new Password(password);
     this._email = new Email(email);
-    this.address = address;
-    this.city = city;
-    this.state = state;
-    this.zip = zip;
+    this.address = address || "";
+    this.city = city || "";
+    this.state = state || "";
+    this.zip = zip || "";
   }
   isEmailValid(): boolean {
     return this._email.isValid;

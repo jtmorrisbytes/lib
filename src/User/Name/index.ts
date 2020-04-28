@@ -18,12 +18,12 @@ export class Name extends String implements IName {
     this._isValid = this.validate(name);
     this._value = value;
   }
-  constructor(name) {
+  constructor(name: string) {
     super();
     this._isValid = this.validate(name);
     this._value = name;
   }
-  validate = function validate(name: string) {
-    return name < this.maxLength;
-  };
+  validate(name: string) {
+    return name.length < this.maxLength;
+  }
 }

@@ -21,13 +21,13 @@ export class Email extends String implements IEmail {
   get isValid(): boolean {
     return this._isValid;
   }
-  constructor(email) {
+  constructor(email: string) {
     super();
     this._isValid = this.validate(email);
     this._email = email;
   }
 
-  validate(email) {
+  validate(email: string) {
     return this.regex.test(email);
   }
 }
