@@ -10,6 +10,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "ts-loader": "^7.0.1",
     "webpack-node-externals": "^1.7.2"
   }
 }

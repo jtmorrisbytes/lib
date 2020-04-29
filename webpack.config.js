@@ -2,8 +2,9 @@ const path = require("path");
 const externals = require("webpack-node-externals");
 module.exports = {
   entry: "./src/index.ts",
+  target: "node",
   externals: [externals(), "pg-native"].filter(
-    (e) => e != "@jtmorrisbytes/lib"
+    (e) => e !== "@jtmorrisbytes/lib"
   ),
   module: {
     rules: [
