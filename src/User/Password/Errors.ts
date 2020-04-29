@@ -31,3 +31,8 @@ export class ENotAuthorized extends Resource.ENotAuthorized {
   REASON = "";
   TYPE = "PASSWORD_INCORRECT";
 }
+export class ENotValid extends Resource.EBadRequest {
+  MESSAGE = "Invalid Password";
+  REASON = "Password did not meet validation requirements";
+  TYPE = "PASSWORD_INVALID";
+}

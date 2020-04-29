@@ -5,6 +5,7 @@ import {
   EMissing,
   EReqCharsMissing,
   EReqSpecCharsMissing,
+  ENotValid,
 } from "./Errors";
 import { Error } from "../../Error";
 import { NIST } from "../../Nist";
@@ -83,4 +84,5 @@ export {
   EReqSpecCharsMissing,
   EMissing,
   ENotAuthorized,
+  ENotValid,
 };
