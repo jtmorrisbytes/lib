@@ -1,5 +1,5 @@
 import { IError } from "../Error";
-interface IResourceError extends IError {
+export interface IResourceError extends IError {
   CODE: number;
 }
 
