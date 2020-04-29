@@ -3,7 +3,9 @@ export interface IEmail {
   isValid: boolean;
   value: string;
 }
-export class Email extends String implements IEmail {
+import { EBadRequest, EMissing, ENotAuthorized } from "./Errors";
+
+class Email extends String implements IEmail {
   // below regex credits to http://regexlib.com/REDetails.aspx?regexp_id=26
   private _regex: RegExp = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
   private _email: string;
@@ -31,3 +33,4 @@ export class Email extends String implements IEmail {
     return this.regex.test(email);
   }
 }
+export { Email, EBadRequest, EMissing, ENotAuthorized };

@@ -1,15 +1,14 @@
 import {
-  EInvalid,
+  ENotAuthorized,
   ETooLong,
   ETooShort,
   EMissing,
   EReqCharsMissing,
   EReqSpecCharsMissing,
-  ENoError,
 } from "./Errors";
-
+import { Error } from "../../Error";
 import { NIST } from "../../Nist";
-export interface IPassword {
+interface IPassword {
   validate: Function;
   isValid: boolean;
   value: string;
@@ -20,18 +19,18 @@ export interface IPassword {
     | EReqCharsMissing
     | EReqSpecCharsMissing
     | NIST.ENist
-    | ENoError;
+    | Error.EmptyError;
   readonly MAX_LENGTH: number;
   readonly ReqChars: RegExp;
   readonly ReqSpecChars: RegExp;
 }
 
-export class Password extends String implements IPassword {
+class Password extends String implements IPassword {
   MAX_LENGTH = 64;
   MIN_LENGTH = 8;
   ReqChars = /[a-zA-Z0-9]+/;
   ReqSpecChars = /\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\-|\+|\=|\\|\||\,|\<|\.|\>|\?|\//;
-  error = new ENoError();
+  error = new Error.EmptyError();
   private _reason: string = "";
   private _description: string = "";
   private _isValid: boolean = false;
@@ -75,3 +74,13 @@ export class Password extends String implements IPassword {
     }
   }
 }
+export type { IPassword };
+export {
+  Password,
+  ETooLong,
+  ETooShort,
+  EReqCharsMissing,
+  EReqSpecCharsMissing,
+  EMissing,
+  ENotAuthorized,
+};

@@ -1,32 +1,33 @@
 import type { IError } from "../../Error";
-export class ETooShort implements IError {
+import { Resource } from "../../Resource";
+export class ETooShort extends Resource.EBadRequest {
   MESSAGE = "Password is too short.";
   REASON = "";
-  TYPE = "TOO_SHORT";
+  TYPE = "PASSWORD_TOO_SHORT";
 }
-export class ETooLong implements IError {
-  TYPE = "TOO_LONG";
+export class ETooLong extends Resource.EBadRequest {
+  TYPE = "PASSWORD_TOO_LONG";
   REASON = "";
   MESSAGE = "Password is too long";
 }
-export class EReqCharsMissing {
+export class EReqCharsMissing extends Resource.EMissing {
   TYPE = "MISSING_REQUIRED_CHARACTERS";
   REASON = "";
   MESSAGE = "Password is required to have at least one special character";
 }
-export class EReqSpecCharsMissing {
+export class EReqSpecCharsMissing extends Resource.EMissing {
   TYPE = "MISSING_REQUIRED_SPECIAL_CHARACTERS";
   REASON = "";
   MESSAGE =
     "Password is required to have one of the following characters: !@#$%^&*()_+=\\/,.<>";
 }
-export class EMissing implements IError {
-  MESSAGE = "Password is missing required characters";
+export class EMissing extends Resource.EMissing {
+  MESSAGE = "Password was missing from req";
   REASON = "";
-  TYPE = "LOGIN_PASSWORD_MISSING";
+  TYPE = "PASSWORD_MISSING";
 }
-export class EInvalid implements IError {
+export class ENotAuthorized extends Resource.ENotAuthorized {
   MESSAGE = "Password does not match our records";
   REASON = "";
-  TYPE = "LOGIN_PASSWORD_INCORRECT";
+  TYPE = "PASSWORD_INCORRECT";
 }
