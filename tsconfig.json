@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "allowJs": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "lib": ["DOM", "ESNext"],
+    "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "outDir": "dist",
-    "extendedDiagnostics": true
+    "extendedDiagnostics": true,
+    "declaration": true,
+    "removeComments": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["index.js"]
 }

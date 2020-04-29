@@ -1,13 +1,37 @@
+import {
+  EInvalid,
+  ETooLong,
+  ETooShort,
+  EMissing,
+  EReqCharsMissing,
+  EReqSpecCharsMissing,
+  ENoError,
+} from "./Errors";
+
+import { NIST } from "../../Nist";
 export interface IPassword {
   validate: Function;
   isValid: boolean;
   value: string;
-  reason: string | null;
-  description: string | null;
+  error:
+    | ETooShort
+    | ETooLong
+    | EMissing
+    | EReqCharsMissing
+    | EReqSpecCharsMissing
+    | NIST.ENist
+    | ENoError;
+  readonly MAX_LENGTH: number;
+  readonly ReqChars: RegExp;
+  readonly ReqSpecChars: RegExp;
 }
-import { PASSWORD } from "../../Constants";
 
 export class Password extends String implements IPassword {
+  MAX_LENGTH = 64;
+  MIN_LENGTH = 8;
+  ReqChars = /[a-zA-Z0-9]+/;
+  ReqSpecChars = /\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\-|\+|\=|\\|\||\,|\<|\.|\>|\?|\//;
+  error = new ENoError();
   private _reason: string = "";
   private _description: string = "";
   private _isValid: boolean = false;
@@ -35,23 +59,17 @@ export class Password extends String implements IPassword {
   }
   validate(password: string) {
     // first check the password length
-    if (password.length < PASSWORD.LENGTH.MIN) {
-      this._reason = PASSWORD.LENGTH.TOO_SHORT.REASON;
-      this._description = PASSWORD.LENGTH.TOO_SHORT.DESCRIPTION;
-    } else if (password.length > PASSWORD.LENGTH.MAX) {
-      this._reason = PASSWORD.LENGTH.TOO_LONG.REASON;
-      this._description = PASSWORD.LENGTH.TOO_LONG.DESCRIPTION;
-    } else if (PASSWORD.REQUIRED.CHARACTERS.REGEX.test(password) === false) {
+    if (password === null) {
+      this.error = new EMissing();
+    } else if (password.length < this.MIN_LENGTH) {
+      this.error = new ETooShort();
+    } else if (password.length > this.MAX_LENGTH) {
+      this.error = new ETooLong();
+    } else if (this.ReqChars.test(password) === false) {
       console.log("checking password for basic characters");
-
-      this._reason = PASSWORD.REQUIRED.CHARACTERS.MISSING.REASON;
-      this._description = PASSWORD.REQUIRED.CHARACTERS.MISSING.DESCRIPTION;
-    } else if (
-      PASSWORD.REQUIRED.SPECIAL_CHARACTERS.REGEX.test(password) === false
-    ) {
-      this._reason = PASSWORD.REQUIRED.SPECIAL_CHARACTERS.MISSING.REASON;
-      this._description =
-        PASSWORD.REQUIRED.SPECIAL_CHARACTERS.MISSING.DESCRIPTION;
+      this.error = new EReqCharsMissing();
+    } else if (this.ReqSpecChars.test(password) === false) {
+      this.error = new EReqSpecCharsMissing();
     } else {
       this._isValid = true;
     }

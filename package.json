@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:Win": "npm install && rmdir /s /q dist && .\\node_modules\\.bin\\tsc && copy src\\package.json .\\dist",
-    "publish:Win": "npm run build:win && cd dist && npm login && npm publish"
+    "publish:Win": "npm run build:Win && cd dist && npm login && npm publish"
   },
   "devDependencies": {
     "typescript": "^3.8.3"

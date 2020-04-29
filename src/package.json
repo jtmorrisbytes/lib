@@ -1,6 +1,6 @@
 {
   "name": "@jtmorrisbytes/lib",
-  "version": "0.0.9",
+  "version": "0.0.15",
   "description": "the common library functions for this company",
   "main": "index.js",
   "scripts": {

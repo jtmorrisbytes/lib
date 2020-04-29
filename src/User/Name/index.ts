@@ -15,7 +15,7 @@ export class Name extends String implements IName {
     return this._value;
   }
   set value(value: string) {
-    this._isValid = this.validate(name);
+    this._isValid = this.validate(value);
     this._value = value;
   }
   constructor(name: string) {

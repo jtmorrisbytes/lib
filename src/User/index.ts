@@ -1,25 +1,29 @@
-export interface IUser {
-  address: string;
-  city: string;
-  state: string;
-  zip: string;
-  readonly isEmailValid: Function;
-  readonly isFirstNameValid: Function;
-  readonly isLastNameValid: Function;
-  readonly isPasswordValid: Function;
-}
-
 import { Password } from "./Password";
 import { Email } from "./Email";
 import { Name } from "./Name";
+import type { IEmail } from "./Email";
+import type { IPassword } from "./Password";
+import type { IName } from "./Name";
 
+declare namespace User {
+  export interface IUser {
+    address: string;
+    city: string;
+    state: string;
+    zip: string;
+    readonly isEmailValid: Function;
+    readonly isFirstNameValid: Function;
+    readonly isLastNameValid: Function;
+    readonly isPasswordValid: Function;
+  }
+}
 // type User = {
 //   firstName: Name;
 //   lastname: Name;
 //   email;
 // };
 
-export class User extends Object implements IUser {
+export default class User extends Object implements User.IUser {
   private _firstName: Name;
   private _lastName: Name;
   private _password: Password;
