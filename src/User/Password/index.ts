@@ -5,9 +5,8 @@ import {
   EMissing,
   EReqCharsMissing,
   EReqSpecCharsMissing,
-  ENotValid,
 } from "./Errors";
-import { Error } from "../../Error";
+import { Error } from "../../Error/";
 import { NIST } from "../../Nist";
 interface IPassword {
   validate: Function;
