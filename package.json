@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "webpack-node-externals": "^1.7.2"
   }
 }

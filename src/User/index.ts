@@ -1,29 +1,19 @@
 import { Password } from "./Password";
 import { Email } from "./Email";
 import { Name } from "./Name";
-import type { IEmail } from "./Email";
-import type { IPassword } from "./Password";
-import type { IName } from "./Name";
+import { ENotFoundByEmail, ENotFoundById } from "./Errors";
 
-declare namespace User {
-  export interface IUser {
-    address: string;
-    city: string;
-    state: string;
-    zip: string;
-    readonly isEmailValid: Function;
-    readonly isFirstNameValid: Function;
-    readonly isLastNameValid: Function;
-    readonly isPasswordValid: Function;
-  }
+export interface IUser {
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  readonly isEmailValid: Function;
+  readonly isFirstNameValid: Function;
+  readonly isLastNameValid: Function;
+  readonly isPasswordValid: Function;
 }
-// type User = {
-//   firstName: Name;
-//   lastname: Name;
-//   email;
-// };
-
-export default class User extends Object implements User.IUser {
+class User extends Object implements IUser {
   private _firstName: Name;
   private _lastName: Name;
   private _password: Password;
@@ -88,3 +78,4 @@ export default class User extends Object implements User.IUser {
     return this._lastName.isValid;
   }
 }
+export { ENotFoundByEmail, ENotFoundById, User };
