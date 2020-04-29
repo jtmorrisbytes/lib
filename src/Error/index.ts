@@ -26,3 +26,8 @@ export namespace Error {
     TYPE = "REFERENCE_ERROR";
   }
 }
+export class EmptyError implements IError {
+  MESSAGE = "";
+  REASON = "";
+  TYPE = "";
+}
