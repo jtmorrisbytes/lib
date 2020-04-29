@@ -25,9 +25,9 @@ export namespace Error {
     REASON = "A Reference Error occurred";
     TYPE = "REFERENCE_ERROR";
   }
-}
-export class EmptyError implements IError {
-  MESSAGE = "";
-  REASON = "";
-  TYPE = "";
+  export class EmptyError implements IError {
+    MESSAGE = "";
+    REASON = "";
+    TYPE = "";
+  }
 }

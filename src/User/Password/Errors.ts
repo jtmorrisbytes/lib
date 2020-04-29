@@ -30,8 +30,3 @@ export class EInvalid implements IError {
   REASON = "";
   TYPE = "LOGIN_PASSWORD_INCORRECT";
 }
-export class ENoError implements IError {
-  MESSAGE = "";
-  REASON = "";
-  TYPE = "";
-}
