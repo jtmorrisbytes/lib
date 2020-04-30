@@ -3,6 +3,7 @@ export interface IName {
   validate: Function;
   value: string;
   isValid: boolean;
+  toString: FunctionConstructor;
 }
 export class Name extends Object implements IName {
   maxLength = 250;
@@ -33,3 +34,6 @@ export class Name extends Object implements IName {
     }
   }
 }
+Name.prototype.toString = function (): string {
+  return this.value;
+};

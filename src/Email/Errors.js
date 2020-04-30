@@ -1,4 +1,4 @@
-const RESPONSE = require("../../Response");
+const RESPONSE = require("../Response");
 
 const EMissing = {
   ...RESPONSE.EMissing,

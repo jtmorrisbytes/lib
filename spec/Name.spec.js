@@ -1,4 +1,4 @@
-const NAME = require("../dist/User/Name");
+const NAME = require("../dist/Name");
 describe("Class Name", () => {
   it("Should exist on namespace NAME", () => {
     expect(NAME.Name).toBeDefined("Namespace NAME must have class Name");

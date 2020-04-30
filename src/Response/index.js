@@ -13,38 +13,46 @@ const IResponseError = {
 
 const ENotFound = {
   ...IResponseError,
-  MESSAGE = "The requested Resource could not be found",
-  REASON = "The Resoure doesnt exist",
-  TYPE = "RESOURCE_NOT_FOUND",
-  CODE = 404,
-}
+  MESSAGE: "The requested Resource could not be found",
+  REASON: "The Resoure doesnt exist",
+  TYPE: "RESOURCE_NOT_FOUND",
+  CODE: 404,
+};
 const EGeneralFailure = {
   ...IResponseError,
-  MESSAGE = "Something went wrong on our end",
-  REASON = "",
-  TYPE = "GENERAL_FAILURE",
-  CODE = 500,
-}
-const EBadRequest =  {
+  MESSAGE: "Something went wrong on our end",
+  REASON: "",
+  TYPE: "GENERAL_FAILURE",
+  CODE: 500,
+};
+const EBadRequest = {
   ...IResponseError,
-  MESSAGE = "Bad Request",
-  REASON = "The client sent a bad request to the server",
-  TYPE = "BAD_REQUEST",
-  CODE = 400,
-}
+  MESSAGE: "Bad Request",
+  REASON: "The client sent a bad request to the server",
+  TYPE: "BAD_REQUEST",
+  CODE: 400,
+};
 const ENotAuthorized = {
   ...IResponseError,
-  MESSAGE = "The Client is not authorized to perform the request at this time.",
-  REASON =
+  MESSAGE: "The Client is not authorized to perform the request at this time.",
+  REASON:
     "Either you are not permitted to access this resource, or you must log in first",
-  TYPE = "NOT_AUTHORIZED",
-  CODE = 401,
-}
-const EMissing =  {
+  TYPE: "NOT_AUTHORIZED",
+  CODE: 401,
+};
+const EMissing = {
   ...IResponseError,
-  MESSAGE = "A Required Resource is Missing from the request",
-  REASON = "",
-  TYPE = "RESOURCE_MISSING",
-  CODE = 422,
-}
-module.exports = {IResponse, IResponseError, ENotFound, ENotAuthorized, EGeneralFailure, EBadRequest, EMissing}
+  MESSAGE: "A Required Resource is Missing from the request",
+  REASON: "",
+  TYPE: "RESOURCE_MISSING",
+  CODE: 422,
+};
+module.exports = {
+  IResponse,
+  IResponseError,
+  ENotFound,
+  ENotAuthorized,
+  EGeneralFailure,
+  EBadRequest,
+  EMissing,
+};

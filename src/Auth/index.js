@@ -40,10 +40,14 @@ const EAuthIPMissMatch = {
   TYPE: typePrefix + "STATE_NOT_FOUND",
 };
 const ELoginRequired = {
-
   ...RESPONSE.ENotAuthorized,
   ...IAuthError,
-  REASON = "Please Log in First",
-  TYPE = typePrefix + "LOGIN_REQUIRED",
-}
-module.exports = { IAuthError, EAuthStateInvalid, EAuthStateNotFound, EAuthIPMissMatch, ELoginRequired };
+  REASON: "Please Log in First",
+  TYPE: typePrefix + "LOGIN_REQUIRED",
+};
+module.exports = {
+  IAuthError,
+  EAuthStateNotFound,
+  EAuthIPMissMatch,
+  ELoginRequired,
+};

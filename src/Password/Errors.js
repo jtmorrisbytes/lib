@@ -1,4 +1,8 @@
-const RESPONSE = require("../../Response");
+const RESPONSE = require("../Response");
+const IPasswordError = {
+  ...RESPONSE.IResponseError,
+};
+
 const ETooShort = {
   ...RESPONSE.EBadRequest,
   MESSAGE: "Password is too short. ",

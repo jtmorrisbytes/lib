@@ -1,10 +1,10 @@
-const PASSWORD = require("../dist/User/Password");
+const PASSWORD = require("../src/Password");
 const sha1 = require("sha1");
 describe("Class Password", () => {
   it("Should set itself to an empty string when its constructor recieves undefined or null", (done) => {
     try {
-      pass = new PASSWORD.Password(undefined);
-      pass = new PASSWORD.Password(null);
+      pass = PASSWORD.Password(undefined);
+      pass = PASSWORD.Password(null);
       done();
     } catch (e) {
       fail("Password should be able to recieve undefined without throwing");
@@ -13,9 +13,9 @@ describe("Class Password", () => {
   });
   it("Should be able to be added to another string using the + operator", (done) => {
     try {
-      let passStr = "a new password";
+      let passStr = "a password";
       let addStr = " end of password";
-      pass = new PASSWORD.Password(passStr);
+      pass = PASSWORD.Password(passStr);
       let newString = pass + addStr;
       expect(newString).toEqual(passStr + addStr);
 
@@ -31,8 +31,7 @@ describe("Class Password", () => {
   });
   it("Should be able to be converted into a buffer", (done) => {
     try {
-      let buf = Buffer.from(new PASSWORD.Password("abcd"));
-      console.log(buf);
+      let buf = Buffer.from(PASSWORD.Password("abcd"));
       done();
     } catch (e) {
       fail(
@@ -43,7 +42,7 @@ describe("Class Password", () => {
   });
   it("Should be able to have its value property converted into a buffer", (done) => {
     try {
-      let buf = Buffer.from(new PASSWORD.Password("efgh").value);
+      let buf = Buffer.from(PASSWORD.Password("efgh").value);
       done();
     } catch (e) {
       fail(
@@ -54,9 +53,9 @@ describe("Class Password", () => {
   });
   it("Should be able to be converted into a string", (done) => {
     try {
-      pass = new PASSWORD.Password("abcd");
+      pass = PASSWORD.Password("abcd");
       expect(pass.toString()).toEqual(jasmine.any(String));
-      pass = new PASSWORD.Password(undefined);
+      pass = PASSWORD.Password(undefined);
       expect(pass.toString()).toEqual(jasmine.any(String));
       done();
     } catch (e) {
@@ -66,10 +65,19 @@ describe("Class Password", () => {
   });
   it("Should be able to be converted into a sha1 hash without throwing", (done) => {
     try {
-      pass = new PASSWORD.Password("ABCD");
+      pass = PASSWORD.Password("ABCD");
       sha1Hash = sha1(pass);
       done();
     } catch (e) {
+      done(e);
+    }
+  });
+  it("Should be able to be converted into a base64 string from a buffer", (done) => {
+    try {
+      hash = Buffer.from(PASSWORD.Password("abcd")).toString("base64");
+      done();
+    } catch (e) {
+      fail("converting class password to base64 should not throw");
       done(e);
     }
   });
