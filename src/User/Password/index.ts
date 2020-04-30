@@ -76,7 +76,10 @@ class Password extends Object implements IPassword {
     }
   }
   toString(): string {
-    return String(this._value);
+    return `${this._value}`;
+  }
+  valueOf(): string {
+    return `${this.value}`;
   }
 }
 export type { IPassword };

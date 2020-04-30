@@ -11,7 +11,47 @@ describe("Class Password", () => {
       done(e);
     }
   });
+  it("Should be able to be added to another string using the + operator", (done) => {
+    try {
+      let passStr = "a new password";
+      let addStr = " end of password";
+      pass = new PASSWORD.Password(passStr);
+      let newString = pass + addStr;
+      expect(newString).toEqual(passStr + addStr);
 
+      //explicitly call pass.valueOf()
+      expect(pass.valueOf()).toBeDefined();
+      // explicitly use the +expr;
+      expect(+pass).toBeDefined();
+      done();
+    } catch (e) {
+      fail("Password.valueof() should now throw");
+      done(e);
+    }
+  });
+  it("Should be able to be converted into a buffer", (done) => {
+    try {
+      let buf = Buffer.from(new PASSWORD.Password("abcd"));
+      console.log(buf);
+      done();
+    } catch (e) {
+      fail(
+        "Password should be able to converted into a buffer without throwing"
+      );
+      done(e);
+    }
+  });
+  it("Should be able to have its value property converted into a buffer", (done) => {
+    try {
+      let buf = Buffer.from(new PASSWORD.Password("efgh").value);
+      done();
+    } catch (e) {
+      fail(
+        "Password should be able to converted into a buffer without throwing"
+      );
+      done(e);
+    }
+  });
   it("Should be able to be converted into a string", (done) => {
     try {
       pass = new PASSWORD.Password("abcd");
