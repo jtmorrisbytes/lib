@@ -4,7 +4,7 @@ export interface IName {
   value: string;
   isValid: boolean;
 }
-export class Name extends String implements IName {
+export class Name extends Object implements IName {
   maxLength = 250;
   private _value = "";
   private _isValid: boolean = false;

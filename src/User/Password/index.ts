@@ -25,7 +25,7 @@ interface IPassword {
   readonly ReqSpecChars: RegExp;
 }
 
-class Password extends String implements IPassword {
+class Password extends Object implements IPassword {
   MAX_LENGTH = 64;
   MIN_LENGTH = 8;
   ReqChars = /[a-zA-Z0-9]+/;
@@ -83,5 +83,4 @@ export {
   EReqSpecCharsMissing,
   EMissing,
   ENotAuthorized,
-  ENotValid,
 };
