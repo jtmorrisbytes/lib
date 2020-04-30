@@ -3,7 +3,7 @@
   "description": "the stub module for @jtmorrisbytes/lib",
   "private": true,
   "scripts": {
-    "build:Win": "npm install && rmdir /s /q dist && .\\node_modules\\.bin\\tsc && copy src\\package.json .\\dist",
+    "build": "build && copyFiles",
     "publish:Win": "npm run build:Win && cd dist && npm login && npm publish"
   },
   "devDependencies": {

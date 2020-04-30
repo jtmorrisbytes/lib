@@ -73,6 +73,9 @@ class Password extends Object implements IPassword {
       this._isValid = true;
     }
   }
+  toString(): string {
+    return String(this._value);
+  }
 }
 export type { IPassword };
 export {
