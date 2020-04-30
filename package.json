@@ -7,6 +7,7 @@
     "publish:Win": "npm run build:Win && cd dist && npm login && npm publish"
   },
   "devDependencies": {
+    "sha1": "^1.1.1",
     "typescript": "^3.8.3"
   },
   "dependencies": {

@@ -48,11 +48,13 @@ class Password extends Object implements IPassword {
     return this._description;
   }
   set value(password: string) {
+    password = password || "";
     this._value = password;
     this.validate(password);
   }
   constructor(password: string) {
     super();
+    password = password || "";
     this._value = password;
     this.validate(password);
   }
