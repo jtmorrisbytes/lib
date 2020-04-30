@@ -6,3 +6,8 @@ export class Auth {
   IP_MISMATCH = "IP_MISMATCH";
   SESSION_EXPIRED = "SESSION_EXPIRED";
 }
+export class ELoginRequired {
+  MESSAGE = "You are not authorized to access this resource.";
+  REASON = "Please Log in First";
+  TYPE = "LOGIN_REQUIRED";
+}
