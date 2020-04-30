@@ -9,6 +9,7 @@ module.exports = function checkInterface(module, interface) {
         if (module[property] != interface) {
           Object.keys(interface).forEach((key) => {
             expect(module[property].hasOwnProperty(key)).toBeTruthy();
+            expect(typeof interface[key]).toEqual(typeof module[property][key]);
           });
         }
       }
