@@ -45,9 +45,16 @@ const ELoginRequired = {
   REASON: "Please Log in First",
   TYPE: typePrefix + "LOGIN_REQUIRED",
 };
+const EAuthStateInvalid = {
+  ...RESPONSE.ENotAuthorized,
+  ...IAuthError,
+  MESSAGE: "Got an invalid auth state",
+  REASON: "auth state must be a string with a length > 0",
+};
 module.exports = {
   IAuthError,
   EAuthStateNotFound,
   EAuthIPMissMatch,
   ELoginRequired,
+  EAuthStateInvalid,
 };

@@ -47,6 +47,10 @@ const EMissing = {
   TYPE: "RESOURCE_MISSING",
   CODE: 422,
 };
+// const EEmptyBody = {
+//   ...IResponseError,
+//   MESSAGE: "Recieved an empty body in request",
+// };
 module.exports = {
   IResponse,
   IResponseError,
