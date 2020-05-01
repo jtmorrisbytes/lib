@@ -13,9 +13,9 @@ function validate(password = "") {
   let o = { isValid: false, error: null };
   if (password === null) {
     o.error = EMissing;
-  } else if (password.length < this.MIN_LENGTH) {
+  } else if (password.length < IPassword.MIN_LENGTH) {
     o.error = ETooShort;
-  } else if (password.length > this.MAX_LENGTH) {
+  } else if (password.length > IPassword.MAX_LENGTH) {
     o.error = ETooLong;
   } else if (IPassword.ReqChars.test(password) === false) {
     console.log("checking password for basic characters");
