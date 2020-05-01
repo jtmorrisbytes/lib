@@ -23,7 +23,7 @@ const EAuthStateMissing = {
   TYPE: typePrefix + "STATE_MISSING",
   PATH: expectedLocations.state,
 };
-stateMissingMessage = "";
+// let stateMissingMessage = "";
 const EAuthStateNotFound = {
   ...IAuthError,
   MESSAGE: ` The given state was not found`,

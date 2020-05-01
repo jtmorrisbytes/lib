@@ -6,6 +6,7 @@ const {
   EReqCharsMissing,
   EReqSpecCharsMissing,
   IPasswordError,
+  ENotValid,
 } = require("./Errors");
 function validate(password = "") {
   // first check the password length
@@ -40,17 +41,17 @@ const IPassword = {
 
 function Password(password = "") {
   const MAX_LENGTH = IPassword.MAX_LENGTH;
-  const MIN_LENGTH = IPassword.MAX_LENGTH;
-
-  let _error = { ...IPasswordError };
-  let _value = password;
-  let _isValid = false;
-  if (typeof _value !== "string") {
-    _value = "";
+  const MIN_LENGTH = IPassword.MIN_LENGTH;
+  if (typeof password !== "string") {
+    password = "";
   }
+  let _value = password;
+  let vRes = validate(_value);
+  let _isValid = vRes.isValid;
+  let _error = vRes.error;
   return {
     get isValid() {
-      return _isValid;
+      return validate(_value).isValid;
     },
     set isValid(value) {
       throw new ReferenceError(
@@ -66,15 +67,18 @@ function Password(password = "") {
     get value() {
       return _value;
     },
+    get error() {
+      return _error;
+    },
     set value(newValue = "") {
       if (typeof newValue !== "string") {
         _value = "";
       } else {
         _value = newValue;
       }
-      vRes = validate(value);
+      vRes = validate(_value);
       _error = vRes.error;
-      isValid = vRes.isValid;
+      _isValid = vRes.isValid;
     },
   };
 }
@@ -87,4 +91,5 @@ module.exports = {
   EReqSpecCharsMissing,
   EMissing,
   ENotAuthorized,
+  ENotValid,
 };

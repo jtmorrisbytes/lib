@@ -28,7 +28,9 @@ function Email(email = "") {
     get isValid() {
       return validate(_value);
     },
-    set isValid(value) {},
+    set isValid(value) {
+      throw new ReferenceError("Cannot set property isValid of type Email");
+    },
     regex,
     toString() {
       return _value;

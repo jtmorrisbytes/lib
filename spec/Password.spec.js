@@ -81,4 +81,17 @@ describe("Class Password", () => {
       done(e);
     }
   });
+  it("Should correctly validate the password", () => {
+    tooShort = PASSWORD.Password("abcd");
+    tooLong = PASSWORD.Password(
+      "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcda"
+    );
+    valid = PASSWORD.Password(";|M3<jhQ(~dE");
+    expect(tooShort.isValid).toBeFalse();
+    expect(tooLong.isValid).toBeFalse();
+    expect(valid.isValid).toBeTrue();
+    // you should be able to change an invalid password to a valid password
+    tooShort.value = ";|M3<jhQ(~dE";
+    expect(tooShort.isValid).toBeTrue();
+  });
 });
