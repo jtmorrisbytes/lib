@@ -64,6 +64,9 @@ function Password(password = "") {
     valueOf() {
       return _value;
     },
+    get error() {
+      return _error;
+    },
     get value() {
       return _value;
     },
@@ -85,6 +88,7 @@ function Password(password = "") {
 // Password.validate = validate;
 module.exports = {
   Password,
+  IPassword,
   ETooLong,
   ETooShort,
   EReqCharsMissing,
