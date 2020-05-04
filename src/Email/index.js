@@ -4,7 +4,7 @@ const IEmail = {
   value: "",
   toString: Function,
 };
-const { EBadRequest, EMissing, ENotAuthorized } = require("./Errors");
+const { EInvalid, EMissing, ENotAuthorized } = require("./Errors");
 function validate(email = "") {
   return regex.test(email);
 }
@@ -39,4 +39,4 @@ function Email(email = "") {
 }
 Email.prototype.validate = validate;
 // Email.prototype.toString = function(){r}
-module.exports = { Email, EBadRequest, EMissing, ENotAuthorized };
+module.exports = { Email, EInvalid, EMissing, ENotAuthorized };
