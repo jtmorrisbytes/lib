@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "build && copyFiles",
-    "publish:Win": "npm run build:Win && cd dist && npm login && npm publish"
+    "publish:Win": "npm run build:Win && cd dist && npm login && npm publish",
+    "publish": "deleteFiles && cd src && npm version patch && cd .. && build.bat && .\\copyFiles && cd dist && npm publish && cd .."
   },
   "devDependencies": {
     "sha1": "^1.1.1",
