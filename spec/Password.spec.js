@@ -90,6 +90,7 @@ describe("Class Password", () => {
     expect(tooShort.isValid).toBeFalse();
     expect(tooLong.isValid).toBeFalse();
     expect(valid.isValid).toBeTrue();
+    expect(PASSWORD.Password("@d3!,EQ;+G68;E").isValid).toBeTrue();
     // you should be able to change an invalid password to a valid password
     tooShort.value = ";|M3<jhQ(~dE";
     expect(tooShort.isValid).toBeTrue();
